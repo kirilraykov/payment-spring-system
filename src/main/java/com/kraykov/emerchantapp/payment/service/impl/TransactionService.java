@@ -116,6 +116,7 @@ public class TransactionService implements ITransactionService {
             transactionRepository.save(authorizedTransactionForCurrentPayment);
             transactionToCreate.setMerchant(merchantForCurrentTransaction);
             transactionToCreate.setTransactionTime(Instant.now());
+            transactionToCreate.setStatus(TransactionStatus.APPROVED);
             return transactionRepository.save(transactionToCreate);
         }
         else {
@@ -142,6 +143,7 @@ public class TransactionService implements ITransactionService {
             transactionRepository.save(chargeTransaction);
             transactionToCreate.setMerchant(merchantForCurrentTransaction);
             transactionToCreate.setTransactionTime(Instant.now());
+            transactionToCreate.setStatus(TransactionStatus.APPROVED);
             return transactionRepository.save(transactionToCreate);
         } else {
             throw new CustomServiceException(TRANSACTION_ALREADY_REFUNDED.getCode(),
@@ -174,6 +176,7 @@ public class TransactionService implements ITransactionService {
         transactionRepository.save(authorizedTransactionForCurrentPayment);
         transactionToCreate.setMerchant(merchantForCurrentTransaction);
         transactionToCreate.setTransactionTime(Instant.now());
+        transactionToCreate.setStatus(TransactionStatus.APPROVED);
         return transactionRepository.save(transactionToCreate);
     }
 
