@@ -1,6 +1,7 @@
 package com.kraykov.emerchantapp.payment.model;
 
 import com.kraykov.emerchantapp.payment.model.user.Merchant;
+import com.kraykov.emerchantapp.payment.model.user.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,7 +16,8 @@ public class Transaction {
     private Long id;
 
     private BigDecimal amount;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TransactionStatus status;
     private String customerEmail;
     private String phone;
     private Long referenceId;

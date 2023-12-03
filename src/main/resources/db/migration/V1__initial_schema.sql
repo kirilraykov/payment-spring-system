@@ -1,10 +1,3 @@
-CREATE TABLE IF NOT EXISTS merchants (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT,
-    status VARCHAR(100),
-    total_transaction_sum DECIMAL(10, 2)
-);
-
 CREATE TABLE IF NOT EXISTS transactions (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     amount DECIMAL(10, 2),
@@ -25,4 +18,9 @@ CREATE TABLE IF NOT EXISTS user (
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL, UNIQUE
     user_type VARCHAR(10) NOT NULL,
+    description TEXT,
+    status VARCHAR(100),
+    total_transaction_sum DECIMAL(10, 2)
+    admin_level INT,
+    admin_location VARCHAR(255)
 );
