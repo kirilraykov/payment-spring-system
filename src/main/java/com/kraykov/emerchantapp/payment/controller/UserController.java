@@ -2,6 +2,7 @@ package com.kraykov.emerchantapp.payment.controller;
 
 import com.kraykov.emerchantapp.payment.auth.JwtUtils;
 import com.kraykov.emerchantapp.payment.model.user.ImportUsersResponse;
+import com.kraykov.emerchantapp.payment.model.user.LoginRequest;
 import com.kraykov.emerchantapp.payment.model.user.User;
 import com.kraykov.emerchantapp.payment.model.user.UserSignupResponse;
 import com.kraykov.emerchantapp.payment.service.api.IUserService;
@@ -42,14 +43,16 @@ public class UserController {
 
     @PostMapping("/auth/login")
     @ResponseStatus(HttpStatus.OK)
-    public String createAuthenticationToken(@RequestBody User loginRequest) throws Exception {
+    public String createAuthenticationToken(@RequestBody LoginRequest loginRequest) throws Exception {
         authenticate(loginRequest.getUsername(), loginRequest.getPassword());
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+                        loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return jwtTokenUtil.generateJwtToken(authentication);
+        User authenticatedUser = userService.getUserByUsername(loginRequest.getUsername());
+        return jwtTokenUtil.generateJwtToken(authentication, authenticatedUser);
     }
 
     @PostMapping(value = "/users/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.kraykov.emerchantapp.payment.exception.ErrorCodes.MISSING_USER_FOR_USERNAME;
 import static java.lang.String.format;
 
 @Service
@@ -52,7 +53,7 @@ public class UserServiceImpl implements IUserService {
 
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8));
              CSVParser csvParser = new CSVParser(fileReader,
-                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
+                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
 
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
@@ -70,6 +71,14 @@ public class UserServiceImpl implements IUserService {
                 .totalUsersImported(totalUsersImported)
                 .importedUsersMessage(totalUsersImported + " Users have been successfully imported.")
                 .build();
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(
+                () -> new CustomServiceException(MISSING_USER_FOR_USERNAME.getCode(),
+                        "No user exists for username: " + username)
+        );
     }
 
     private User createUserFromCsvRecord(CSVRecord csvRecord) {

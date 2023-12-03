@@ -1,6 +1,6 @@
 package com.kraykov.emerchantapp.payment.auth;
 
-import com.kraykov.emerchantapp.payment.model.user.UserDetailsImpl;
+import com.kraykov.emerchantapp.payment.model.user.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -23,10 +23,14 @@ public class JwtUtils {
     @Value("${jwt.expiration}")
     private int jwtExpirationMs;
 
-    public String generateJwtToken(Authentication authentication) {
+    public String generateJwtToken(Authentication authentication, User authenticatedUser) {
 
         return Jwts.builder()
                 .setSubject(authentication.getName())
+                .claim("userType", authenticatedUser.getUserType())
+                .claim("userEmail", authenticatedUser.getEmail())
+                .claim("userId", authenticatedUser.getId())
+                .claim("name", authenticatedUser.getName())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS256, key())

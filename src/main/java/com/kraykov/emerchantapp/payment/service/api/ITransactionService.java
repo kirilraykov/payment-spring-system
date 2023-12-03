@@ -6,5 +6,6 @@ import com.kraykov.emerchantapp.payment.model.Transaction;
 import java.util.List;
 
 public interface ITransactionService {
-    List<Transaction> getAllTransactions();
+    List<Transaction> getTransactionsForMerchantId(Long merchantId);
+    Transaction createTransaction(Long merchantId, Transaction transaction);
 }

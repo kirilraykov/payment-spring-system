@@ -10,4 +10,5 @@ import java.io.IOException;
 public interface IUserService {
     UserSignupResponse registerUser(User user);
     ImportUsersResponse importUsers(MultipartFile file) throws IOException;
+    User getUserByUsername(String username);
 }

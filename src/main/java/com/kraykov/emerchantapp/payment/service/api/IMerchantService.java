@@ -7,4 +7,5 @@ import java.util.List;
 public interface IMerchantService {
     List<Merchant> getAllMerchants();
     Merchant getMerchantByEmail(String merchantEmail);
+    Merchant getMerchantById(Long merchantId);
 }

@@ -3,6 +3,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     amount DECIMAL(10, 2),
     status VARCHAR(100),
     customer_email VARCHAR(255),
+    transaction_type VARCHAR(255),
+    transaction_time timestamp,
     phone VARCHAR(15),
     merchant_id BIGINT,
     reference_id BIGINT,
