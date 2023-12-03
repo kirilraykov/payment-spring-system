@@ -1,6 +1,6 @@
 package com.kraykov.emerchantapp.payment.controller;
 
-import com.kraykov.emerchantapp.payment.model.Merchant;
+import com.kraykov.emerchantapp.payment.model.user.User;
 import com.kraykov.emerchantapp.payment.service.impl.MerchantService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -32,7 +32,7 @@ public class MerchantController {
     @Operation(summary = "Get all merchants")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public List<Merchant> getAllMerchants(){
+    public List<User> getAllMerchants(){
         return merchantService.getAllMerchants();
     }
 }

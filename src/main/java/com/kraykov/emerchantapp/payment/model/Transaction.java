@@ -1,5 +1,6 @@
 package com.kraykov.emerchantapp.payment.model;
 
+import com.kraykov.emerchantapp.payment.model.user.Merchant;
 import jakarta.persistence.*;
 import lombok.Data;
 
