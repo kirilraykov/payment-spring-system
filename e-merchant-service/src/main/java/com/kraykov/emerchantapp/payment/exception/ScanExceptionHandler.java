@@ -24,6 +24,10 @@ import java.util.regex.Pattern;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 
+/**
+ * Custom REST Controller advice Exception handler.
+ * Depending on the error code number, different HTTP status code will be returned for different errors.
+ */
 @RestControllerAdvice
 public class ScanExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(ScanExceptionHandler.class);

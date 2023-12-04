@@ -1,4 +1,9 @@
 package com.kraykov.emerchantapp.payment.exception;
+
+/**
+ * Error codes which are specific to the handled exceptions in the Payment service.
+ * To be eventually used for client error documentation.
+ */
 public enum ErrorCodes {
     MISSING_USER_TYPE("PMNT-40001"),
     MERCHANT_ALREADY_AUTHORIZED_TRANSACTION("PMNT-40002"),
@@ -12,7 +17,6 @@ public enum ErrorCodes {
     MISSING_MERCHANT_WITH_ID("PMNT-40403"),
     MISSING_USER_FOR_USERNAME("PMNT-40404"),
     FAILED_TO_CREATE_TRANSACTION("PMNT-40001");
-
 
     private final String code;
 

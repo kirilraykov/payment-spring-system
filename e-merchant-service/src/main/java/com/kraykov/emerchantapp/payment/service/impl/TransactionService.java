@@ -125,6 +125,16 @@ public class TransactionService implements ITransactionService {
         }
     }
 
+    /**
+     * Get all merchant's transactions for the current referenceId.
+     * Check if filtered transactions contain charge transaction.
+     * If not, throw exception as refund depends on charge first
+     * If yes, check if transaction has NOT been already refunded.
+     * If no, set the refunded status and save the transaction to be created.
+     * @param merchantId - existing merchant ID
+     * @param transactionToCreate - the transaction to be created
+     * @return the created transaction (if creation has succeeded)
+     */
     private Transaction processRefundTransaction(Long merchantId, Transaction transactionToCreate) {
         Merchant merchantForCurrentTransaction = merchantService.getMerchantById(merchantId);
         List<Transaction> existingTransactionsForCurrentPayment = getTransactionsForMerchantId(merchantId).stream()

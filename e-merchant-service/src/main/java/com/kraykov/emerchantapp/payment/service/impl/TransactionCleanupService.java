@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Background Scheduled Job which is calling the scheduled method every 30mins,
+ * which will delete any transaction older than 1 hour.
+ * Note: No validations are set on which transaction can be deleted, as it only demonstrates the scheduler.
+ * In a more complex system, validations for deletion will be implemented.
+ */
 @Service
 public class TransactionCleanupService {
 
@@ -22,7 +28,8 @@ public class TransactionCleanupService {
         this.transactionRepository = transactionRepository;
     }
 
-    @Scheduled(fixedRate = 1800000) // 30 minutes in milliseconds
+    // 30 minutes in milliseconds
+    @Scheduled(fixedRate = 1800000)
     public void deleteOldTransactions() {
         LOGGER.info("Deleting transactions older than 1 hour...");
         Instant oneHourAgo = Instant.now().minus(1, ChronoUnit.HOURS);
