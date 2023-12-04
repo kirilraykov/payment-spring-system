@@ -43,7 +43,7 @@ public class UserController {
 
     @PostMapping("/auth/login")
     @ResponseStatus(HttpStatus.OK)
-    public String createAuthenticationToken(@RequestBody LoginRequest loginRequest) throws Exception {
+    public String loginUser(@RequestBody LoginRequest loginRequest) throws Exception {
         authenticate(loginRequest.getUsername(), loginRequest.getPassword());
 
         Authentication authentication = authenticationManager.authenticate(

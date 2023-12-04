@@ -1,6 +1,5 @@
 package com.kraykov.emerchantapp.payment.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kraykov.emerchantapp.payment.model.user.Merchant;
 import com.kraykov.emerchantapp.payment.model.user.TransactionStatus;
@@ -8,7 +7,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -16,6 +18,9 @@ import java.time.Instant;
 @Entity
 @Table(name = "transactions")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
