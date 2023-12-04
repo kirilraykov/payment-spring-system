@@ -59,7 +59,7 @@ function MerchantList() {
                     <th>Description</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Total Transactions</th>
+                    <th>Total Transactions Sum</th>
                     <th>Status</th>
                     <th>Transactions</th>
                 </tr>

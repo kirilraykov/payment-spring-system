@@ -1,0 +1,3 @@
+name,username,password,email,userType,description,status,totalTransactionSum,adminLevel,adminLocation
+Georgi Petkov,georgi1,123456,vnikgg20@gmail.com,merchant,Customer from Hisaryat,active,0,,,
+Ivet Goranova,ivetgoranova,123456,ivetGor@gmail.com,merchant,Customer from Sofia,active,0,,,
