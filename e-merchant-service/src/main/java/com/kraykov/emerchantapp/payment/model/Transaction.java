@@ -2,7 +2,6 @@ package com.kraykov.emerchantapp.payment.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kraykov.emerchantapp.payment.model.user.Merchant;
-import com.kraykov.emerchantapp.payment.model.user.TransactionStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

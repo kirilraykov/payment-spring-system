@@ -4,7 +4,7 @@ import com.kraykov.emerchantapp.payment.model.Transaction;
 import com.kraykov.emerchantapp.payment.model.TransactionType;
 import com.kraykov.emerchantapp.payment.model.exception.CustomServiceException;
 import com.kraykov.emerchantapp.payment.model.user.Merchant;
-import com.kraykov.emerchantapp.payment.model.user.TransactionStatus;
+import com.kraykov.emerchantapp.payment.model.TransactionStatus;
 import com.kraykov.emerchantapp.payment.repository.TransactionRepository;
 import com.kraykov.emerchantapp.payment.service.api.IMerchantService;
 import org.junit.jupiter.api.BeforeEach;
