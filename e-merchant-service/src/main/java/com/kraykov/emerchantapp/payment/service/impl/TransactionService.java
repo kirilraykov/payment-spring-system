@@ -181,7 +181,7 @@ public class TransactionService implements ITransactionService {
 
         Transaction authorizedTransaction = transactionRepository.findFirstByMerchantIdAndTransactionType(merchantId, AUTHORIZE)
                 .orElseThrow(() -> new CustomServiceException(TRANSACTION_MISSING_AUTHORIZATION.getCode(),
-                        "Transaction is not authorized."));
+                        "Cannot create reversal transaction when authorization transaction is missing."));
 
         authorizedTransaction.setStatus(REVERSED);
         transactionRepository.save(authorizedTransaction);

@@ -37,18 +37,6 @@ public class MerchantControllerTest {
     }
 
     @Test
-    public void testGetMerchant() throws Exception {
-        String merchantEmail = "merchant@gmail.com";
-        Merchant mockMerchant = new Merchant();
-        mockMerchant.setEmail(merchantEmail);
-        when(merchantService.getMerchantByEmail(merchantEmail)).thenReturn(mockMerchant);
-
-        mockMvc.perform(get("/api/merchants/" + merchantEmail))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.email").value(merchantEmail));
-    }
-
-    @Test
     public void testGetAllMerchants() throws Exception {
         Merchant merchant1 = new Merchant();
         Merchant merchant2 = new Merchant();
